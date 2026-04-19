@@ -7,7 +7,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 text-primary font-serif text-2xl tracking-tight">
           <Heart className="h-6 w-6 fill-primary" />
-          <span>KindNest</span>
+          <span>Belong</span>
         </Link>
         <div className="hidden md:flex items-center gap-8">
           <a href="#about" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Our Mission</a>

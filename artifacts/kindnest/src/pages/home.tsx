@@ -44,7 +44,7 @@ export default function Home() {
             >
               <h2 className="text-4xl md:text-5xl font-serif mb-6 text-foreground">A softer world starts here.</h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We believe in the quiet joy of a safe home. KindNest is a sanctuary—a place where trust is built, awareness is spread, and gentle connections are made.
+                We believe in the quiet joy of a safe home. Belong is a sanctuary—a place where trust is built, awareness is spread, and gentle connections are made.
               </p>
             </motion.div>
 
@@ -306,7 +306,7 @@ export default function Home() {
                 <Heart className="w-12 h-12 text-primary mb-6" />
                 <h2 className="text-4xl font-serif mb-6 text-foreground">A growing community of kindness.</h2>
                 <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-                  "Finding our dog through KindNest was the most peaceful experience. The shelter was so transparent, and we felt supported the whole time."
+                  "Finding our dog through Belong was the most peaceful experience. The shelter was so transparent, and we felt supported the whole time."
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="flex text-primary">

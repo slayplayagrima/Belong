@@ -11,7 +11,7 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 text-primary font-serif text-2xl tracking-tight mb-4">
               <Heart className="h-6 w-6 fill-primary" />
-              <span>KindNest</span>
+              <span>Belong</span>
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">
               Connecting loving families with animals and raising awareness for child adoption across India.
@@ -86,7 +86,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} KindNest India. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Belong India. All rights reserved.</p>
           <p className="text-xs text-center text-[#9CA3AF]">
             Built in collaboration with verified NGOs across India.
           </p>

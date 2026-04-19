@@ -80,7 +80,7 @@ export default function NgoRegister() {
             ) : (
               <>
                 <div className="mb-10 text-center">
-                  <h1 className="text-3xl md:text-4xl font-serif mb-4">Partner with KindNest</h1>
+                  <h1 className="text-3xl md:text-4xl font-serif mb-4">Partner with Belong</h1>
                   <p className="text-muted-foreground">
                     Register your verified NGO to connect with families looking to adopt or foster.
                   </p>
