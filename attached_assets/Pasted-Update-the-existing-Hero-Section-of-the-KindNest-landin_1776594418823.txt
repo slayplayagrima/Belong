@@ -1,0 +1,148 @@
+Update the existing Hero Section of the KindNest landing page to make it more emotional, differentiated, and conversion-focused.
+
+DO NOT redesign from scratch. Improve the current structure.
+
+Use:
+
+* React (TypeScript)
+* Tailwind CSS
+
+---
+
+1. 🧠 ADD EMOTIONAL HOOK (TOP LINE)
+
+Above the main heading, add a small, subtle line:
+
+Text:
+"Thousands are waiting for a home. Some just haven’t met you yet."
+
+Style:
+
+* Small text
+* Muted gray (#6B7280)
+* Margin-bottom spacing
+
+---
+
+2. ✨ IMPROVE MAIN HEADING
+
+Keep the current heading:
+"Where hope meets home."
+
+But:
+
+* Make "meets home" highlighted in soft peach (#FFB7A5)
+* Slightly increase font size
+* Add better line-height
+
+---
+
+3. 🎯 CTA HIERARCHY FIX (VERY IMPORTANT)
+
+Primary Button:
+"Start Your Journey"
+
+* Background: peach (#FFB7A5)
+* Text: white
+* Rounded-full
+* Slight hover scale (scale-105)
+* Shadow
+
+Secondary Button:
+"Register as NGO"
+
+* NO fill
+* Border only (light gray)
+* Text muted
+* Smaller than primary
+
+Ensure:
+
+* Primary is visually dominant
+* Proper spacing between buttons
+
+---
+
+4. 🛡️ ADD TRUST SIGNALS (UNDER CTA)
+
+Below the buttons, add a horizontal row:
+
+Example:
+✔ Verified NGOs across India
+✔ Safe & transparent adoption
+✔ Trusted by shelters nationwide
+
+Style:
+
+* Small text
+* Light gray
+* Icons (checkmarks or minimal icons)
+* Even spacing
+
+---
+
+5. 🖼️ ENHANCE RIGHT SIDE VISUAL
+
+Keep the main image (child + pet), but:
+
+Add 1–2 floating mini cards on top of the image:
+
+Example Card:
+
+* Small rounded card
+* Animal photo thumbnail
+* Name: "Milo"
+* Tag: "2 months • Delhi"
+
+Style:
+
+* White background
+* Rounded-xl
+* Soft shadow
+* Slight absolute positioning
+
+This adds depth and removes the “template look”
+
+---
+
+6. 📐 BREAK PERFECT SYMMETRY
+
+* Slightly offset the image downward or upward
+* Add more whitespace on left
+* Avoid perfectly centered feel
+
+---
+
+7. ✨ MICRO-INTERACTIONS
+
+* Buttons: smooth hover transition
+* Cards: slight hover lift (translateY)
+* Image: very subtle scale on hover (optional)
+
+---
+
+8. 📱 RESPONSIVENESS
+
+* Mobile: stack text above image
+* Buttons full-width on mobile
+* Maintain spacing and readability
+
+---
+
+9. 🎨 FEEL CHECK
+
+The hero must feel:
+
+* Emotional
+* Trustworthy
+* Soft and warm
+* Not corporate
+* Not generic template
+
+---
+
+Output:
+
+* Updated HeroSection component
+* Clean Tailwind styling
+* Reusable components if needed
