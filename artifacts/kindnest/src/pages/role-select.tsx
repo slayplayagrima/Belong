@@ -31,7 +31,7 @@ export default function RoleSelect() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {/* Card 1: Adopt */}
             <motion.button
-              onClick={() => {}}
+              onClick={() => setLocation('/signup')}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}

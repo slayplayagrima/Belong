@@ -6,6 +6,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import RoleSelect from "@/pages/role-select";
 import NgoRegister from "@/pages/ngo-register";
+import Signup from "@/pages/signup";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/role-select" component={RoleSelect} />
       <Route path="/ngo/register" component={NgoRegister} />
+      <Route path="/signup" component={Signup} />
       <Route component={NotFound} />
     </Switch>
   );
