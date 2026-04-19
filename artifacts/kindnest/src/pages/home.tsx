@@ -137,8 +137,8 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                   className="text-center group cursor-default"
                 >
-                  <div className="w-24 h-24 mx-auto bg-card border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-sm shadow-primary/10 group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-200">
-                    <span className="font-serif text-2xl" style={{ color: "#F0907A" }}>{item.step}</span>
+                  <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-200" style={{ backgroundColor: "#F0907A" }}>
+                    <span className="font-serif text-2xl text-white">{item.step}</span>
                   </div>
                   <h3 className="text-xl font-serif mb-3 text-foreground">{item.title}</h3>
                   <p className="text-muted-foreground">{item.desc}</p>
