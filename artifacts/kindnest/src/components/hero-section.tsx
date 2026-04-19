@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle2, Heart, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 
 const trustSignals = [
   "Verified NGOs across India",
@@ -109,22 +109,6 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           </motion.div>
 
-          {/* Floating lives touched badge — bottom-left */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-            whileHover={{ y: -4 }}
-            className="absolute -bottom-6 -left-6 bg-card p-5 rounded-3xl shadow-xl flex items-center gap-4 border border-border transition-all duration-300 cursor-default"
-          >
-            <div className="w-12 h-12 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-              <Heart className="w-6 h-6 text-primary fill-primary" />
-            </div>
-            <div>
-              <p className="font-serif text-2xl text-foreground leading-none mb-0.5">1,200+</p>
-              <p className="text-xs font-medium text-muted-foreground">Lives Touched</p>
-            </div>
-          </motion.div>
         </motion.div>
 
       </div>
