@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import { Navbar } from "@/components/navbar";
@@ -23,8 +23,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  // Success
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, setLocation] = useLocation();
 
   const phoneValid = /^\d{10}$/.test(phone);
   const otpValid = /^\d{6}$/.test(otp);
@@ -56,45 +55,12 @@ export default function Login() {
 
   function handleVerify() {
     if (!otpValid) return;
-    setIsLoggedIn(true);
+    setLocation("/");
   }
 
   function handlePasswordLogin() {
     if (!emailValid || !passwordValid) return;
-    setIsLoggedIn(true);
-  }
-
-  if (isLoggedIn) {
-    return (
-      <div className="min-h-[100dvh] flex flex-col bg-background">
-        <Navbar />
-        <main className="flex-1 flex items-center justify-center pt-32 pb-16 px-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-card border border-border p-10 md:p-14 rounded-[2rem] shadow-xl text-center w-full max-w-md mx-auto"
-          >
-            <div
-              className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-              style={{ backgroundColor: "#F0907A22" }}
-            >
-              <ShieldCheck className="w-10 h-10" style={{ color: "#F0907A" }} />
-            </div>
-            <h2 className="text-3xl font-serif mb-3">Welcome back!</h2>
-            <p className="text-muted-foreground text-lg mb-8 max-w-sm mx-auto leading-relaxed">
-              You're logged in. Continue exploring animals and connecting with verified NGOs.
-            </p>
-            <Link
-              href="/"
-              className="h-12 px-10 inline-flex items-center justify-center rounded-full text-white font-medium transition-all hover:scale-105 active:scale-95 shadow-md"
-              style={{ backgroundColor: "#F0907A" }}
-            >
-              Go to Home
-            </Link>
-          </motion.div>
-        </main>
-      </div>
-    );
+    setLocation("/");
   }
 
   return (

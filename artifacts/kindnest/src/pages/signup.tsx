@@ -1,6 +1,6 @@
-import { Link } from "wouter";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Eye, EyeOff, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Link, useLocation } from "wouter";
+import { motion } from "framer-motion";
+import { ArrowLeft, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -48,9 +48,9 @@ function SectionLabel({ label }: { label: string }) {
 }
 
 export default function Signup() {
+  const [, setLocation] = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -66,7 +66,7 @@ export default function Signup() {
   });
 
   const onSubmit = (_data: FormValues) => {
-    setIsSubmitted(true);
+    setLocation("/");
   };
 
   return (
@@ -83,39 +83,11 @@ export default function Signup() {
             Back
           </Link>
 
-          <AnimatePresence mode="wait">
-            {isSubmitted ? (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-card border border-border p-10 md:p-14 rounded-[2rem] shadow-xl text-center"
-              >
-                <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6"
-                  style={{ backgroundColor: "#F0907A22" }}
-                >
-                  <CheckCircle2 className="w-10 h-10" style={{ color: "#F0907A" }} />
-                </div>
-                <h2 className="text-3xl font-serif mb-3">Account created!</h2>
-                <p className="text-muted-foreground text-lg mb-8 max-w-sm mx-auto leading-relaxed">
-                  Welcome to Belong. You can now explore animals and connect with verified NGOs across India.
-                </p>
-                <Link
-                  href="/"
-                  className="h-12 px-10 inline-flex items-center justify-center rounded-full text-white font-medium transition-all hover:scale-105 active:scale-95 shadow-md"
-                  style={{ backgroundColor: "#F0907A" }}
-                >
-                  Go to Home
-                </Link>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="form"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-card border border-border p-8 md:p-12 rounded-[2rem] shadow-xl"
-              >
+          <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-card border border-border p-8 md:p-12 rounded-[2rem] shadow-xl"
+            >
                 {/* Header */}
                 <div className="mb-8 text-center">
                   <h1 className="text-3xl md:text-4xl font-serif mb-3">Start your journey</h1>
@@ -311,9 +283,7 @@ export default function Signup() {
                     </p>
                   </form>
                 </Form>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            </motion.div>
         </div>
       </main>
     </div>
