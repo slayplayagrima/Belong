@@ -6,6 +6,24 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Heart, Shield, Users, CheckCircle2, Star } from "lucide-react";
 
+const storiesOfHope = [
+  {
+    image: "/images/cat.png",
+    caption: "Rescued from the streets, now loved at home.",
+    ngo: "Paws & Hearts Rescue",
+  },
+  {
+    image: "/images/hero.png",
+    caption: "From shelter to sofa in 3 weeks. He chose us.",
+    ngo: "Hope Shelter India",
+  },
+  {
+    image: "/images/community.png",
+    caption: "A family of four became five, one rescue at a time.",
+    ngo: "New Beginnings NGO",
+  },
+];
+
 export default function Home() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
@@ -90,10 +108,26 @@ export default function Home() {
             <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto relative">
               <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-border -z-10" />
               {[
-                { step: "01", title: "Choose Your Path", desc: "Select if you want to adopt an animal or explore child welfare." },
-                { step: "02", title: "Explore Profiles", desc: "Browse verified shelters and NGO partners across India." },
-                { step: "03", title: "Connect", desc: "Reach out securely through our platform to begin the conversation." },
-                { step: "04", title: "Welcome Home", desc: "Complete the legal and ethical steps to build your family." },
+                {
+                  step: "01",
+                  title: "Choose Adoption Path",
+                  desc: "Select whether you want to adopt an animal or explore child adoption guidance.",
+                },
+                {
+                  step: "02",
+                  title: "Discover Animals & NGOs",
+                  desc: "Browse verified animal listings and trusted NGO partners across India.",
+                },
+                {
+                  step: "03",
+                  title: "Send Requests",
+                  desc: "Apply for animal adoption or send inquiries to NGOs securely.",
+                },
+                {
+                  step: "04",
+                  title: "Complete the Journey",
+                  desc: "Follow through with the adoption process and bring someone home.",
+                },
               ].map((item, i) => (
                 <motion.div 
                   key={i}
@@ -101,9 +135,9 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="text-center"
+                  className="text-center group cursor-default"
                 >
-                  <div className="w-24 h-24 mx-auto bg-card border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-sm shadow-primary/10">
+                  <div className="w-24 h-24 mx-auto bg-card border-4 border-background rounded-full flex items-center justify-center mb-6 shadow-sm shadow-primary/10 group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-200">
                     <span className="font-serif text-2xl text-primary">{item.step}</span>
                   </div>
                   <h3 className="text-xl font-serif mb-3 text-foreground">{item.title}</h3>
@@ -164,11 +198,13 @@ export default function Home() {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className=""
               >
                 <h2 className="text-4xl md:text-5xl font-serif mb-6 text-foreground">Guiding the path to family.</h2>
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+                <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
                   Child adoption in India can be complex. We raise awareness, provide resources, and connect you with certified CARA-approved NGOs to demystify the journey.
+                </p>
+                <p className="text-sm text-[#9CA3AF] mb-8">
+                  Child adoption is guided through verified agencies and follows official legal processes in India.
                 </p>
                 <ul className="space-y-5 mb-10">
                   {['Legal guidance and CARA process resources', 'Connections to verified partner NGOs', 'Community support groups for parents'].map((item, i) => (
@@ -198,7 +234,59 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 6: Community & Success */}
+        {/* Section 6: Stories of Hope */}
+        <section className="py-24 bg-muted/20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center max-w-2xl mx-auto mb-16"
+            >
+              <h2 className="text-4xl md:text-5xl font-serif mb-4 text-foreground">Stories of Hope</h2>
+              <p className="text-xl text-muted-foreground leading-relaxed">
+                Real moments shared by NGOs and rescuers.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {storiesOfHope.map((story, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  whileHover={{ y: -6 }}
+                  className="bg-card rounded-2xl overflow-hidden shadow-sm border border-border hover:shadow-lg transition-all duration-300 cursor-default"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={story.image}
+                      alt={story.caption}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      onError={(e) => {
+                        const t = e.currentTarget;
+                        t.style.display = "none";
+                        t.parentElement!.classList.add("bg-muted", "flex", "items-center", "justify-center");
+                      }}
+                    />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-foreground font-medium leading-snug mb-3">
+                      "{story.caption}"
+                    </p>
+                    <p className="text-xs text-[#9CA3AF] font-medium tracking-wide uppercase">
+                      — {story.ngo}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: Community & Success */}
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -231,7 +319,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 7: Partner NGOs Banner */}
+        {/* Section 8: Partner NGOs Banner */}
         <section className="py-16 border-y border-border">
           <div className="container mx-auto px-4 text-center">
             <p className="text-muted-foreground font-medium mb-8">TRUSTED BY CARA-APPROVED NGOS AND VERIFIED SHELTERS NATIONWIDE</p>
@@ -245,7 +333,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 8: CTA Section */}
+        {/* Section 9: CTA Section */}
         <section className="py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-primary/10 -skew-y-3 transform origin-top-left scale-110"></div>
           <div className="container mx-auto px-4 relative z-10 text-center">
@@ -258,21 +346,26 @@ export default function Home() {
               <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-8">
                 <Heart className="w-10 h-10 text-primary" />
               </div>
-              <h2 className="text-4xl md:text-6xl font-serif mb-6 text-foreground">Ready to make a difference?</h2>
+              <h2 className="text-4xl md:text-6xl font-serif mb-6 text-foreground">Someone out there is waiting for you.</h2>
               <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
                 Whether you're looking to adopt, volunteer, or register your NGO, your journey towards a kinder world starts right here.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-                <Button asChild size="lg" className="h-16 px-10 text-xl rounded-full">
-                  <Link href="/role-select">
-                    Start Your Journey
-                  </Link>
-                </Button>
-                <Button asChild variant="muted" size="lg" className="h-16 px-10 text-xl rounded-full">
-                  <Link href="/ngo/register">
-                    I'm an NGO
-                  </Link>
-                </Button>
+                <Link
+                  href="/role-select"
+                  data-testid="button-cta-start"
+                  className="inline-flex items-center justify-center h-16 px-10 text-xl rounded-full text-white font-semibold shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95"
+                  style={{ backgroundColor: "#FFB7A5" }}
+                >
+                  Start Your Journey
+                </Link>
+                <Link
+                  href="/ngo/register"
+                  data-testid="button-cta-ngo"
+                  className="inline-flex items-center justify-center h-16 px-10 text-xl rounded-full font-medium text-foreground border-2 border-border bg-transparent transition-all duration-200 hover:border-primary/50 hover:bg-muted/30 active:scale-95"
+                >
+                  I'm an NGO
+                </Link>
               </div>
             </motion.div>
           </div>
