@@ -40,7 +40,7 @@ export function HeroSection() {
             Where hope <br />
             <span
               className="italic"
-              style={{ color: "#FFB7A5" }}
+              style={{ color: "#F0907A" }}
             >
               meets home.
             </span>
