@@ -130,7 +130,7 @@ export default function NgoRegister() {
                             <FormItem>
                               <FormLabel>
                                 Gov. Registration No.
-                                <span className="ml-2 text-xs text-[#9CA3AF] font-normal">Required for verification</span>
+                                <span className="block text-xs text-[#9CA3AF] font-normal mt-0.5">Required for verification</span>
                               </FormLabel>
                               <FormControl>
                                 <Input placeholder="REG-12345" className="h-12 rounded-xl" {...field} />
