@@ -74,7 +74,7 @@ export default function RoleSelect() {
             className="text-center text-sm text-muted-foreground mb-4"
           >
             Already have an account?{" "}
-            <Link href="#" className="underline underline-offset-2 hover:text-foreground transition-colors">
+            <Link href="/login" className="underline underline-offset-2 hover:text-foreground transition-colors">
               Log in
             </Link>
           </motion.p>
