@@ -355,7 +355,7 @@ export default function Home() {
                   href="/role-select"
                   data-testid="button-cta-start"
                   className="inline-flex items-center justify-center h-16 px-10 text-xl rounded-full text-white font-semibold shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95"
-                  style={{ backgroundColor: "#FFB7A5" }}
+                  style={{ backgroundColor: "#F0907A" }}
                 >
                   Start Your Journey
                 </Link>
