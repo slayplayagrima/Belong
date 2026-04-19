@@ -45,9 +45,9 @@ export default function NgoRegister() {
     <div className="min-h-[100dvh] flex flex-col bg-background">
       <Navbar />
       
-      <main className="flex-1 flex items-center justify-center py-20 px-4 mt-16">
+      <main className="flex-1 flex items-center justify-center py-20 px-4">
         <div className="w-full max-w-2xl mx-auto">
-          <Link href="/role-select" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-8 transition-colors font-medium">
+          <Link href="/role-select" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to selection
           </Link>
@@ -55,7 +55,7 @@ export default function NgoRegister() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-card border border-border p-8 md:p-12 rounded-[2.5rem] shadow-xl"
+            className="bg-card border border-border p-8 md:p-12 rounded-[2rem] shadow-xl"
           >
             {isSubmitted ? (
               <motion.div 
@@ -63,16 +63,16 @@ export default function NgoRegister() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="text-center py-10"
               >
-                <div className="w-24 h-24 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 className="w-12 h-12 text-secondary-foreground" />
+                <div className="w-20 h-20 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 className="w-10 h-10 text-secondary-foreground" />
                 </div>
-                <h2 className="text-4xl font-serif mb-4 text-primary">Application Received</h2>
-                <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto leading-relaxed">
+                <h2 className="text-3xl font-serif mb-4">Application Received</h2>
+                <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
                   Thank you for your dedication to creating safe homes. Our team will review your application and contact you within 2-3 business days.
                 </p>
                 <Link 
                   href="/" 
-                  className="h-14 px-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-medium hover:bg-[#d97218] transition-all shadow-[0_4px_14px_0_rgba(234,106,17,0.39)] hover:-translate-y-0.5"
+                  className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
                 >
                   Return to Home
                 </Link>
@@ -80,8 +80,8 @@ export default function NgoRegister() {
             ) : (
               <>
                 <div className="mb-10 text-center">
-                  <h1 className="text-4xl md:text-5xl font-serif mb-4 text-primary">Partner with KindNest</h1>
-                  <p className="text-muted-foreground text-lg">
+                  <h1 className="text-3xl md:text-4xl font-serif mb-4">Partner with KindNest</h1>
+                  <p className="text-muted-foreground">
                     Register your verified NGO to connect with families looking to adopt or foster.
                   </p>
                 </div>
@@ -94,9 +94,9 @@ export default function NgoRegister() {
                         name="organizationName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground/80 font-medium text-base">Organization Name</FormLabel>
+                            <FormLabel>Organization Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="Hope Shelter" className="h-14 rounded-xl text-lg bg-background border-border/80 focus-visible:ring-primary/50" {...field} />
+                              <Input placeholder="Hope Shelter" className="h-12 rounded-xl" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -107,9 +107,9 @@ export default function NgoRegister() {
                         name="registrationNumber"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground/80 font-medium text-base">Gov. Registration No.</FormLabel>
+                            <FormLabel>Gov. Registration No.</FormLabel>
                             <FormControl>
-                              <Input placeholder="REG-12345" className="h-14 rounded-xl text-lg bg-background border-border/80 focus-visible:ring-primary/50" {...field} />
+                              <Input placeholder="REG-12345" className="h-12 rounded-xl" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -123,9 +123,9 @@ export default function NgoRegister() {
                         name="contactName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground/80 font-medium text-base">Primary Contact Name</FormLabel>
+                            <FormLabel>Primary Contact Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="Priya Sharma" className="h-14 rounded-xl text-lg bg-background border-border/80 focus-visible:ring-primary/50" {...field} />
+                              <Input placeholder="Priya Sharma" className="h-12 rounded-xl" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -136,9 +136,9 @@ export default function NgoRegister() {
                         name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground/80 font-medium text-base">Phone Number</FormLabel>
+                            <FormLabel>Phone Number</FormLabel>
                             <FormControl>
-                              <Input placeholder="+91 98765 43210" className="h-14 rounded-xl text-lg bg-background border-border/80 focus-visible:ring-primary/50" {...field} />
+                              <Input placeholder="+91 98765 43210" className="h-12 rounded-xl" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -151,9 +151,9 @@ export default function NgoRegister() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground/80 font-medium text-base">Organization Email</FormLabel>
+                          <FormLabel>Organization Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="hello@hopeshelter.org" className="h-14 rounded-xl text-lg bg-background border-border/80 focus-visible:ring-primary/50" {...field} />
+                            <Input placeholder="hello@hopeshelter.org" className="h-12 rounded-xl" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -165,11 +165,11 @@ export default function NgoRegister() {
                       name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground/80 font-medium text-base">Brief Description of Work</FormLabel>
+                          <FormLabel>Brief Description of Work</FormLabel>
                           <FormControl>
                             <Textarea 
                               placeholder="Tell us about the animals or children you support..." 
-                              className="min-h-[140px] rounded-xl text-lg resize-none bg-background border-border/80 focus-visible:ring-primary/50 py-4" 
+                              className="min-h-[120px] rounded-xl resize-none" 
                               {...field} 
                             />
                           </FormControl>
@@ -180,11 +180,11 @@ export default function NgoRegister() {
 
                     <button 
                       type="submit"
-                      className="w-full h-16 mt-6 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground text-xl font-medium hover:bg-[#d97218] transition-all hover:scale-[1.02] active:scale-95 shadow-[0_4px_14px_0_rgba(234,106,17,0.39)]"
+                      className="w-full h-14 mt-4 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-transform hover:scale-[1.02] active:scale-95 shadow-md"
                     >
                       Submit Application
                     </button>
-                    <p className="text-center text-sm text-muted-foreground mt-6">
+                    <p className="text-center text-sm text-muted-foreground mt-4">
                       By submitting, you confirm that your organization is legally registered in India.
                     </p>
                   </form>
