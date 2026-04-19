@@ -73,7 +73,7 @@ export default function Signup() {
     <div className="min-h-[100dvh] flex flex-col bg-background">
       <Navbar />
 
-      <main className="flex-1 flex items-center justify-center py-16 px-4">
+      <main className="flex-1 flex items-center justify-center pt-32 pb-16 px-4">
         <div className="w-full max-w-lg mx-auto">
           <Link
             href="/role-select"
