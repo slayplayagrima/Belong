@@ -1,18 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, CheckCircle2, Heart, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, Heart, Sparkles } from "lucide-react";
 
 const trustSignals = [
   "Verified NGOs across India",
   "Safe & transparent adoption",
   "Trusted by shelters nationwide",
 ];
-
-const floatingCard = {
-  image: "/images/hero.png",
-  name: "Milo",
-  tag: "2 months • Delhi",
-};
 
 export function HeroSection() {
   return (
@@ -113,36 +107,6 @@ export function HeroSection() {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-          </motion.div>
-
-          {/* Floating animal preview card — top-left */}
-          <motion.div
-            initial={{ opacity: 0, x: -20, y: -10 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.9 }}
-            whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
-            className="absolute -top-6 -left-6 lg:-left-10 bg-white rounded-2xl shadow-xl border border-[#F3F4F6] p-3 flex items-center gap-3 transition-all duration-300 cursor-default"
-          >
-            <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
-              <img
-                src="/images/hero.png"
-                alt="Milo"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-foreground leading-none mb-1">{floatingCard.name}</p>
-              <p className="text-xs text-[#9CA3AF] flex items-center gap-1">
-                <MapPin className="w-3 h-3" />
-                {floatingCard.tag}
-              </p>
-            </div>
-            <span
-              className="ml-1 text-[10px] font-semibold px-2 py-1 rounded-full"
-              style={{ backgroundColor: "#FFF0EC", color: "#FFB7A5" }}
-            >
-              Available
-            </span>
           </motion.div>
 
           {/* Floating lives touched badge — bottom-left */}
