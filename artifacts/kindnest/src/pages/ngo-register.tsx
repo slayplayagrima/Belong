@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -20,6 +20,14 @@ const formSchema = z.object({
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+function SectionLabel({ label }: { label: string }) {
+  return (
+    <p className="text-xs font-semibold uppercase tracking-widest text-[#9CA3AF] mb-4 mt-2">
+      {label}
+    </p>
+  );
+}
 
 export default function NgoRegister() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -72,119 +80,149 @@ export default function NgoRegister() {
                 </p>
                 <Link 
                   href="/" 
-                  className="h-12 px-8 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                  className="h-12 px-8 inline-flex items-center justify-center rounded-full text-white font-medium transition-all hover:scale-105 active:scale-95 shadow-md"
+                  style={{ backgroundColor: "#F0907A" }}
                 >
                   Return to Home
                 </Link>
               </motion.div>
             ) : (
               <>
-                <div className="mb-10 text-center">
-                  <h1 className="text-3xl md:text-4xl font-serif mb-4">Partner with Belong</h1>
+                <div className="mb-8 text-center">
+                  <h1 className="text-3xl md:text-4xl font-serif mb-3">Partner with Belong</h1>
                   <p className="text-muted-foreground">
                     Register your verified NGO to connect with families looking to adopt or foster.
                   </p>
                 </div>
 
+                {/* Trust info box */}
+                <div className="flex items-start gap-3 bg-secondary/10 border border-secondary/30 rounded-xl px-4 py-3 mb-8">
+                  <ShieldCheck className="w-5 h-5 text-secondary-foreground mt-0.5 flex-shrink-0" />
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    We verify every NGO to ensure a safe and transparent adoption ecosystem.
+                  </p>
+                </div>
+
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+
+                    {/* Section 1: Organization Details */}
+                    <div>
+                      <SectionLabel label="Organization Details" />
+                      <div className="grid md:grid-cols-2 gap-5">
+                        <FormField
+                          control={form.control}
+                          name="organizationName"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Organization Name</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Hope Shelter" className="h-12 rounded-xl" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="registrationNumber"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>
+                                Gov. Registration No.
+                                <span className="ml-2 text-xs text-[#9CA3AF] font-normal">Required for verification</span>
+                              </FormLabel>
+                              <FormControl>
+                                <Input placeholder="REG-12345" className="h-12 rounded-xl" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Section 2: Contact Details */}
+                    <div className="pt-2">
+                      <SectionLabel label="Contact Details" />
+                      <div className="space-y-5">
+                        <div className="grid md:grid-cols-2 gap-5">
+                          <FormField
+                            control={form.control}
+                            name="contactName"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Primary Contact Name</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Priya Sharma" className="h-12 rounded-xl" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Phone Number</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="+91 98765 43210" className="h-12 rounded-xl" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <FormField
+                          control={form.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Organization Email</FormLabel>
+                              <FormControl>
+                                <Input placeholder="hello@hopeshelter.org" className="h-12 rounded-xl" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Section 3: About */}
+                    <div className="pt-2">
+                      <SectionLabel label="About" />
                       <FormField
                         control={form.control}
-                        name="organizationName"
+                        name="description"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Organization Name</FormLabel>
+                            <FormLabel>
+                              Brief Description of Work
+                              <span className="ml-2 text-xs text-[#9CA3AF] font-normal">Briefly describe your work and who you support</span>
+                            </FormLabel>
                             <FormControl>
-                              <Input placeholder="Hope Shelter" className="h-12 rounded-xl" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="registrationNumber"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Gov. Registration No.</FormLabel>
-                            <FormControl>
-                              <Input placeholder="REG-12345" className="h-12 rounded-xl" {...field} />
+                              <Textarea 
+                                placeholder="Tell us about the animals or children you support..." 
+                                className="min-h-[120px] rounded-xl resize-none" 
+                                {...field} 
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
                         )}
                       />
                     </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="contactName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Primary Contact Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Priya Sharma" className="h-12 rounded-xl" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Phone Number</FormLabel>
-                            <FormControl>
-                              <Input placeholder="+91 98765 43210" className="h-12 rounded-xl" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Organization Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="hello@hopeshelter.org" className="h-12 rounded-xl" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="description"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Brief Description of Work</FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Tell us about the animals or children you support..." 
-                              className="min-h-[120px] rounded-xl resize-none" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
 
                     <button 
                       type="submit"
-                      className="w-full h-14 mt-4 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-medium hover:bg-primary/90 transition-transform hover:scale-[1.02] active:scale-95 shadow-md"
+                      className="w-full h-14 mt-2 inline-flex items-center justify-center rounded-full text-white text-lg font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md"
+                      style={{ backgroundColor: "#F0907A" }}
                     >
-                      Submit Application
+                      Apply for Verification
                     </button>
-                    <p className="text-center text-sm text-muted-foreground mt-4">
+                    <p className="text-center text-sm text-muted-foreground">
                       By submitting, you confirm that your organization is legally registered in India.
                     </p>
                   </form>

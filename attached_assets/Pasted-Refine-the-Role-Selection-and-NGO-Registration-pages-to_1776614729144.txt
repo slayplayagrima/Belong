@@ -1,0 +1,142 @@
+Refine the Role Selection and NGO Registration pages to improve UX, emotional engagement, and product clarity.
+
+Do NOT redesign completely. Enhance existing components.
+
+Use React (TypeScript) + Tailwind.
+
+---
+
+## 1. ROLE SELECT PAGE IMPROVEMENTS
+
+### Update Heading:
+
+Replace:
+"How would you like to join us?"
+
+With:
+"What brings you here today?"
+
+Subtext:
+"Choose your path to begin your journey with Belong."
+
+---
+
+### Improve Cards Content:
+
+Card 1:
+Title: "I want to adopt"
+Description:
+"Explore animals, learn about child adoption, and connect with verified NGOs across India."
+
+Card 2:
+Title: "I represent an NGO"
+Description:
+"Register your organization, share stories, and connect with families looking to adopt."
+
+---
+
+### Add Interactions:
+
+* Hover:
+
+  * scale-105
+  * stronger shadow
+* Cursor pointer
+* Smooth transition (duration-200)
+
+---
+
+### Add Trust Line (below cards):
+
+"All NGOs on our platform are verified to ensure safety and transparency."
+
+Style:
+
+* Small text
+* Muted gray
+* Centered
+
+---
+
+## 2. NGO REGISTRATION PAGE IMPROVEMENTS
+
+### Add Trust Info Box (above form):
+
+Text:
+"We verify every NGO to ensure a safe and transparent adoption ecosystem."
+
+Style:
+
+* Light background
+* Rounded-lg
+* Subtle border
+* Padding
+
+---
+
+### Improve CTA Button:
+
+Replace:
+"Submit Application"
+
+With:
+"Apply for Verification"
+
+---
+
+### Group Form Fields:
+
+Section 1: Organization Details
+
+* Organization Name
+* Gov Registration No.
+
+Section 2: Contact Details
+
+* Primary Contact Name
+* Phone Number
+* Email
+
+Section 3: About
+
+* Description textarea
+
+Add spacing between sections
+
+---
+
+### Add Microcopy:
+
+Registration field:
+"Required for verification"
+
+Description field:
+"Briefly describe your work and who you support"
+
+---
+
+## 3. UI CONSISTENCY
+
+* Maintain soft pastel theme
+* Rounded inputs
+* Clean spacing
+* Accessible font sizes
+
+---
+
+## GOAL
+
+Make onboarding feel:
+
+* Intentional
+* Trustworthy
+* Guided
+* Professional
+
+---
+
+Output:
+
+* Updated RoleSelect component
+* Updated NGORegister component
+* Clean Tailwind structure
