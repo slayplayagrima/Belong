@@ -1,0 +1,225 @@
+Add a new page called **Adopter Profile Page** to the EXISTING web application named **"Belong"**.
+
+IMPORTANT CONTEXT:
+
+* This is part of the SAME Belong platform already built
+* The app already includes:
+
+  * Landing page (hero section)
+  * Role selection page
+  * Login / Signup system
+* DO NOT create a new app or separate design
+* Maintain COMPLETE consistency with existing UI
+
+---
+
+## 🔗 ROUTING INTEGRATION
+
+* Create route: `/profile/adopter`
+* After successful signup/login (role = adopter), redirect user here
+* Use existing React Router setup
+
+---
+
+## 🎨 DESIGN SYSTEM (MUST MATCH EXISTING)
+
+* Same soft pastel theme
+* Same primary peach color (#FFB7A5)
+* Same rounded UI (rounded-xl, rounded-2xl)
+* Same shadows and spacing
+* Reuse existing components:
+
+  * Button
+  * Input
+  * Card
+
+---
+
+## 🎯 PURPOSE OF THIS PAGE
+
+This page allows users to:
+
+* Complete their adoption profile
+* Provide details required by NGOs for trust & verification
+* Improve chances of adoption approval
+
+---
+
+## 🧩 PAGE HEADER
+
+Title:
+"Complete Your Profile"
+
+Subtext:
+"Help NGOs understand you better and increase your chances of adoption."
+
+---
+
+## 📊 PROGRESS INDICATOR
+
+* Show profile completion percentage (e.g., 40%)
+* Update dynamically as user fills the form
+
+---
+
+## 🧍 SECTION 1: PERSONAL DETAILS
+
+Fields:
+
+* Full Name
+* Date of Birth
+* Phone Number (show “Verified” badge if OTP verified)
+* Email
+* City, State
+* Profile Photo upload
+
+---
+
+## 🪪 SECTION 2: VERIFICATION
+
+Add helper text:
+"Used for NGO trust and verification. Your data is secure."
+
+Fields:
+
+* Government ID Type (Aadhaar / PAN / Passport / Voter ID)
+* ID Number (masked input)
+* Upload ID Document
+
+Show status badge:
+"Verification: Pending"
+
+---
+
+## 🏠 SECTION 3: HOUSEHOLD DETAILS
+
+Fields:
+
+* Residence Type
+* Ownership (Owned / Rented)
+* Landlord Approval (toggle)
+* Number of family members
+* Any children at home (Yes/No)
+* Work schedule
+* Existing pets (Yes/No + details)
+
+---
+
+## 🐾 SECTION 4: ADOPTION PREFERENCES
+
+Animal Adoption:
+
+* Dog / Cat / Both
+* Age preference
+* Size preference
+
+---
+
+## 👶 CHILD ADOPTION (GUIDED ONLY)
+
+Add toggle:
+"Interested in child adoption?"
+
+If YES:
+Show info box:
+
+"Belong connects you with verified NGOs. Child adoption follows official government processes in India."
+
+Fields:
+
+* Preferred age group
+* Open to special needs (Yes/No)
+* Marital status
+* Income range
+
+---
+
+## 💡 SECTION 5: EXPERIENCE
+
+Fields:
+
+* Previous adoption experience (Yes/No)
+* Why do you want to adopt? (textarea)
+* Willing for home visit? (Yes/No)
+
+---
+
+## ✅ SECTION 6: CONSENT
+
+Checkboxes:
+
+* I confirm the information provided is accurate
+* I agree to be contacted by verified NGOs
+* I understand adoption involves responsibility and legal processes
+
+---
+
+## 🔘 ACTION BUTTONS
+
+Primary:
+"Save Profile"
+
+Secondary:
+"Continue Exploring"
+
+---
+
+## 🛡️ TRUST ELEMENTS
+
+Add UI elements:
+
+* "Verified profiles have higher chances of approval"
+* "Your data is protected and only shared with verified NGOs"
+
+---
+
+## ⚙️ FUNCTIONAL BEHAVIOR
+
+* Controlled form inputs
+* Basic validation
+* Store structured state
+* Prepare for backend integration
+
+---
+
+## 📦 DATA STRUCTURE
+
+Ensure form maps to:
+
+{
+userId,
+personalDetails,
+verification,
+household,
+preferences,
+experience,
+consent
+}
+
+---
+
+## 📱 RESPONSIVENESS
+
+* Mobile-first design
+* Sections stack vertically
+* Inputs full-width
+
+---
+
+## 🎯 FINAL GOAL
+
+The page should feel:
+
+* Like a natural continuation of the Belong platform
+* Consistent with all previous pages
+* Trustworthy, structured, and guided
+* Not overwhelming despite detailed inputs
+
+---
+
+Output:
+
+* AdopterProfile component
+* Integrated route
+* Uses existing UI components
+* Clean React + Tailwind structure

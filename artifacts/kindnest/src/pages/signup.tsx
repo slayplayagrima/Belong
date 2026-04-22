@@ -66,7 +66,7 @@ export default function Signup() {
   });
 
   const onSubmit = (_data: FormValues) => {
-    setLocation("/");
+    setLocation("/profile/adopter");
   };
 
   return (
