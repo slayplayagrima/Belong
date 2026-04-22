@@ -102,7 +102,7 @@ export function HeroSection() {
             className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/60"
           >
             <img
-              src="/images/hero.png"
+              src="https://lifesong.b-cdn.net/site/wp-content/uploads/2019/10/91535DFB-2B24-4F46-947E-9A36FD1A12B0-copy-2-1024x656.jpg"
               alt="Child hugging a golden retriever puppy"
               className="w-full h-full object-cover"
             />
