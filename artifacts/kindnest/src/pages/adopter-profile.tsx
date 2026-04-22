@@ -272,7 +272,10 @@ export default function AdopterProfile() {
           </motion.div>
 
           {/* Progress */}
-          <div className="bg-card border border-border rounded-2xl p-5 mb-8 shadow-sm sticky top-24 z-10 backdrop-blur-md bg-background/80">
+          <div
+            className="border-2 rounded-2xl p-5 mb-8 shadow-md sticky top-24 z-10 backdrop-blur-md"
+            style={{ backgroundColor: "#FFF1EC", borderColor: "#F0907A55" }}
+          >
             <div className="flex items-center justify-between mb-2">
               <p className="text-sm font-medium text-foreground">Profile completion</p>
               <p className="text-sm font-semibold" style={{ color: "#F0907A" }}>{completion}%</p>
