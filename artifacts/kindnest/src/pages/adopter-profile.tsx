@@ -7,6 +7,8 @@ import {
   Upload,
   Camera,
   Info,
+  Lock,
+  Clock,
 } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { useState, useMemo } from "react";
@@ -20,6 +22,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { useToast } from "@/hooks/use-toast";
+
+type ProfileStatus = "incomplete" | "review" | "verified";
 
 type ProfileState = {
   personalDetails: {
@@ -36,6 +41,7 @@ type ProfileState = {
     idType: string;
     idNumber: string;
     idDocName: string;
+    linkedin: string;
   };
   household: {
     residenceType: string;
@@ -51,6 +57,9 @@ type ProfileState = {
     animalType: string;
     agePreference: string;
     sizePreference: string;
+    dailyTime: string;
+    activityLevel: string;
+    openToFostering: string;
     interestedInChild: boolean;
     childAgeGroup: string;
     openToSpecialNeeds: string;
@@ -80,7 +89,7 @@ const initialState: ProfileState = {
     state: "",
     photoName: "",
   },
-  verification: { idType: "", idNumber: "", idDocName: "" },
+  verification: { idType: "", idNumber: "", idDocName: "", linkedin: "" },
   household: {
     residenceType: "",
     ownership: "",
@@ -95,6 +104,9 @@ const initialState: ProfileState = {
     animalType: "",
     agePreference: "",
     sizePreference: "",
+    dailyTime: "",
+    activityLevel: "",
+    openToFostering: "",
     interestedInChild: false,
     childAgeGroup: "",
     openToSpecialNeeds: "",
@@ -126,7 +138,7 @@ function SectionCard({
     >
       <div className="flex items-start gap-4 mb-6">
         <div
-          className="w-10 h-10 rounded-full flex items-center justify-center font-serif text-base text-white flex-shrink-0"
+          className="w-12 h-12 rounded-full flex items-center justify-center font-serif text-lg text-white flex-shrink-0 shadow-sm"
           style={{ backgroundColor: "#F0907A" }}
         >
           {number}
@@ -181,9 +193,29 @@ function YesNo({
   );
 }
 
+function StatusBadge({ status }: { status: ProfileStatus }) {
+  const config = {
+    incomplete: { label: "Incomplete", bg: "#FEF3C7", color: "#92400E" },
+    review: { label: "Under Review", bg: "#FFE4D6", color: "#9A3412" },
+    verified: { label: "Verified", bg: "#D1FAE5", color: "#065F46" },
+  }[status];
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full"
+      style={{ backgroundColor: config.bg, color: config.color }}
+    >
+      {status === "verified" && <CheckCircle2 className="w-3 h-3" />}
+      {config.label}
+    </span>
+  );
+}
+
 export default function AdopterProfile() {
   const [, setLocation] = useLocation();
+  const { toast } = useToast();
   const [data, setData] = useState<ProfileState>(initialState);
+  const [status, setStatus] = useState<ProfileStatus>("incomplete");
+  const isLocked = status !== "incomplete";
 
   // ---- Progress calculation ----
   const completion = useMemo(() => {
@@ -239,7 +271,12 @@ export default function AdopterProfile() {
       ...data,
     };
     console.log("Saving profile:", payload);
-    setLocation("/");
+    setStatus("review");
+    toast({
+      title: "Profile saved successfully",
+      description: "Your profile is now under review.",
+    });
+    setTimeout(() => setLocation("/"), 1200);
   }
 
   const consentAll =
@@ -263,24 +300,30 @@ export default function AdopterProfile() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-8"
+            className="text-center mb-6"
           >
             <h1 className="text-3xl md:text-4xl font-serif mb-3">Complete Your Profile</h1>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Help NGOs understand you better and increase your chances of adoption.
             </p>
+            <p className="text-sm text-muted-foreground max-w-xl mx-auto mt-3 italic">
+              Your profile will be shared with verified NGOs only when you express interest.
+            </p>
           </motion.div>
 
-          {/* Progress */}
+          {/* Progress + Status */}
           <div
             className="border-2 rounded-2xl p-5 mb-8 shadow-md sticky top-24 z-10 backdrop-blur-md"
             style={{ backgroundColor: "#FFF1EC", borderColor: "#F0907A55" }}
           >
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-sm font-medium text-foreground">Profile completion</p>
-              <p className="text-sm font-semibold" style={{ color: "#F0907A" }}>{completion}%</p>
+            <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-medium text-foreground">Profile Status:</p>
+                <StatusBadge status={status} />
+              </div>
+              <p className="text-sm font-semibold" style={{ color: "#F0907A" }}>{completion}% complete</p>
             </div>
-            <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+            <div className="h-3 w-full rounded-full bg-white/70 overflow-hidden ring-1 ring-[#F0907A33]">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${completion}%` }}
@@ -380,10 +423,11 @@ export default function AdopterProfile() {
               description="Used for NGO trust and verification. Your data is secure."
             >
               <div className="flex items-center justify-between bg-secondary/10 border border-secondary/30 rounded-xl px-4 py-3">
-                <p className="text-sm text-muted-foreground">Verification status</p>
-                <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full bg-amber-100 text-amber-800">
-                  Pending
-                </span>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  Verification may take 24–48 hours
+                </div>
+                <StatusBadge status={status} />
               </div>
 
               <div className="grid md:grid-cols-2 gap-5">
@@ -391,6 +435,7 @@ export default function AdopterProfile() {
                   <Select
                     value={data.verification.idType}
                     onValueChange={(v) => update("verification", { idType: v })}
+                    disabled={isLocked}
                   >
                     <SelectTrigger className="h-12 rounded-xl">
                       <SelectValue placeholder="Select ID type" />
@@ -409,19 +454,46 @@ export default function AdopterProfile() {
                     onChange={(e) => update("verification", { idNumber: e.target.value })}
                     placeholder="XXXX XXXX 1234"
                     className="h-12 rounded-xl"
+                    disabled={isLocked}
                   />
                 </Field>
               </div>
 
               <Field label="Upload ID Document" hint="PDF, JPG or PNG">
-                <label className="flex items-center gap-3 cursor-pointer h-12 px-4 rounded-xl border border-dashed border-input hover:border-[#F0907A] transition-colors bg-muted/40">
+                <label
+                  className={`flex items-center gap-3 h-12 px-4 rounded-xl border border-dashed border-input transition-colors bg-muted/40 ${
+                    isLocked ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:border-[#F0907A]"
+                  }`}
+                >
                   <Upload className="w-4 h-4 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground flex-1 truncate">
                     {data.verification.idDocName || "Click to upload ID document"}
                   </span>
-                  <input type="file" accept="image/*,application/pdf" onChange={handleIdDocChange} className="hidden" />
+                  <input
+                    type="file"
+                    accept="image/*,application/pdf"
+                    onChange={handleIdDocChange}
+                    className="hidden"
+                    disabled={isLocked}
+                  />
                 </label>
               </Field>
+
+              <Field label="LinkedIn Profile" hint="Optional · Used only for identity verification">
+                <Input
+                  value={data.verification.linkedin}
+                  onChange={(e) => update("verification", { linkedin: e.target.value })}
+                  placeholder="https://linkedin.com/in/yourname"
+                  className="h-12 rounded-xl"
+                />
+              </Field>
+
+              {isLocked && (
+                <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/40 rounded-xl px-4 py-2.5">
+                  <Lock className="w-3.5 h-3.5" />
+                  Contact support to update verified details.
+                </div>
+              )}
             </SectionCard>
 
             {/* Section 3: Household Details */}
@@ -584,7 +656,46 @@ export default function AdopterProfile() {
                     </SelectContent>
                   </Select>
                 </Field>
+                <Field label="Daily Time Availability">
+                  <Select
+                    value={data.preferences.dailyTime}
+                    onValueChange={(v) => update("preferences", { dailyTime: v })}
+                  >
+                    <SelectTrigger className="h-12 rounded-xl">
+                      <SelectValue placeholder="Hours per day" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="under-2">Less than 2 hours</SelectItem>
+                      <SelectItem value="2-4">2 - 4 hours</SelectItem>
+                      <SelectItem value="4-6">4 - 6 hours</SelectItem>
+                      <SelectItem value="6-plus">6+ hours</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </Field>
+                <Field label="Activity Level Preference">
+                  <Select
+                    value={data.preferences.activityLevel}
+                    onValueChange={(v) => update("preferences", { activityLevel: v })}
+                  >
+                    <SelectTrigger className="h-12 rounded-xl">
+                      <SelectValue placeholder="Select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="calm">Calm / Low energy</SelectItem>
+                      <SelectItem value="moderate">Moderate</SelectItem>
+                      <SelectItem value="active">Active / High energy</SelectItem>
+                      <SelectItem value="any">Any</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </Field>
               </div>
+
+              <Field label="Open to fostering">
+                <YesNo
+                  value={data.preferences.openToFostering}
+                  onChange={(v) => update("preferences", { openToFostering: v })}
+                />
+              </Field>
 
               {/* Child adoption toggle */}
               <div className="flex items-center justify-between bg-muted/40 rounded-xl px-4 py-3 mt-2">
@@ -607,7 +718,7 @@ export default function AdopterProfile() {
                   <div className="flex items-start gap-3 bg-secondary/10 border border-secondary/30 rounded-xl px-4 py-3">
                     <Info className="w-5 h-5 text-secondary-foreground mt-0.5 flex-shrink-0" />
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Belong connects you with verified NGOs. Child adoption follows official government processes in India.
+                      Belong does not directly match children. We connect you with government-approved agencies (CARA) that follow official adoption processes in India.
                     </p>
                   </div>
 
@@ -735,13 +846,13 @@ export default function AdopterProfile() {
                 className="flex-1 h-14 rounded-full text-white text-base font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
                 style={{ backgroundColor: "#F0907A" }}
               >
-                Save Profile
+                Save &amp; Start Exploring
               </button>
               <button
                 onClick={() => setLocation("/")}
                 className="flex-1 h-14 rounded-full border border-input bg-transparent text-foreground text-base font-medium hover:bg-muted/50 transition-all"
               >
-                Continue Exploring
+                Complete Later
               </button>
             </div>
           </div>
