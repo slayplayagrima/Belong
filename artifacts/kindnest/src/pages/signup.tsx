@@ -247,7 +247,7 @@ export default function Signup() {
                                   type="checkbox"
                                   checked={field.value === true}
                                   onChange={(e) => field.onChange(e.target.checked ? true : undefined)}
-                                  className="mt-1 w-4 h-4 rounded accent-[#F0907A] flex-shrink-0 cursor-pointer"
+                                  className="mt-1 w-4 h-4 rounded accent-[#5B9FE0] flex-shrink-0 cursor-pointer"
                                 />
                                 <span className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                                   I understand adoption is a responsible process and agree to be contacted by verified NGOs.
@@ -270,7 +270,7 @@ export default function Signup() {
                     <button
                       type="submit"
                       className="w-full h-14 mt-2 inline-flex items-center justify-center rounded-full text-white text-lg font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md"
-                      style={{ backgroundColor: "#F0907A" }}
+                      style={{ backgroundColor: "#5B9FE0" }}
                     >
                       Create Account
                     </button>

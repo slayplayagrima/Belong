@@ -139,7 +139,7 @@ function SectionCard({
       <div className="flex items-start gap-4 mb-6">
         <div
           className="w-12 h-12 rounded-full flex items-center justify-center font-serif text-lg text-white flex-shrink-0 shadow-sm"
-          style={{ backgroundColor: "#F0907A" }}
+          style={{ backgroundColor: "#5B9FE0" }}
         >
           {number}
         </div>
@@ -182,7 +182,7 @@ function YesNo({
           className="flex-1 h-11 rounded-xl border text-sm font-medium transition-all duration-200"
           style={
             value === opt
-              ? { backgroundColor: "#F0907A", borderColor: "#F0907A", color: "#fff" }
+              ? { backgroundColor: "#5B9FE0", borderColor: "#5B9FE0", color: "#fff" }
               : { backgroundColor: "transparent", borderColor: "var(--border)", color: "var(--foreground)" }
           }
         >
@@ -196,7 +196,7 @@ function YesNo({
 function StatusBadge({ status }: { status: ProfileStatus }) {
   const config = {
     incomplete: { label: "Incomplete", bg: "#FEF3C7", color: "#92400E" },
-    review: { label: "Under Review", bg: "#FFE4D6", color: "#9A3412" },
+    review: { label: "Under Review", bg: "#DBEAFE", color: "#1E40AF" },
     verified: { label: "Verified", bg: "#D1FAE5", color: "#065F46" },
   }[status];
   return (
@@ -314,22 +314,22 @@ export default function AdopterProfile() {
           {/* Progress + Status */}
           <div
             className="border-2 rounded-2xl p-5 mb-8 shadow-md sticky top-24 z-10 backdrop-blur-md"
-            style={{ backgroundColor: "#FFF1EC", borderColor: "#F0907A55" }}
+            style={{ backgroundColor: "#EAF3FB", borderColor: "#5B9FE055" }}
           >
             <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
               <div className="flex items-center gap-2">
                 <p className="text-sm font-medium text-foreground">Profile Status:</p>
                 <StatusBadge status={status} />
               </div>
-              <p className="text-sm font-semibold" style={{ color: "#F0907A" }}>{completion}% complete</p>
+              <p className="text-sm font-semibold" style={{ color: "#5B9FE0" }}>{completion}% complete</p>
             </div>
-            <div className="h-3 w-full rounded-full bg-white/70 overflow-hidden ring-1 ring-[#F0907A33]">
+            <div className="h-3 w-full rounded-full bg-white/70 overflow-hidden ring-1 ring-[#5B9FE033]">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${completion}%` }}
                 transition={{ duration: 0.4 }}
                 className="h-full rounded-full"
-                style={{ backgroundColor: "#F0907A" }}
+                style={{ backgroundColor: "#5B9FE0" }}
               />
             </div>
             <p className="flex items-center gap-2 text-xs text-[#9CA3AF] mt-3">
@@ -406,7 +406,7 @@ export default function AdopterProfile() {
               </div>
 
               <Field label="Profile Photo" hint="JPG or PNG, max 5MB">
-                <label className="flex items-center gap-3 cursor-pointer h-12 px-4 rounded-xl border border-dashed border-input hover:border-[#F0907A] transition-colors bg-muted/40">
+                <label className="flex items-center gap-3 cursor-pointer h-12 px-4 rounded-xl border border-dashed border-input hover:border-[#5B9FE0] transition-colors bg-muted/40">
                   <Camera className="w-4 h-4 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground flex-1 truncate">
                     {data.personalDetails.photoName || "Click to upload your photo"}
@@ -462,7 +462,7 @@ export default function AdopterProfile() {
               <Field label="Upload ID Document" hint="PDF, JPG or PNG">
                 <label
                   className={`flex items-center gap-3 h-12 px-4 rounded-xl border border-dashed border-input transition-colors bg-muted/40 ${
-                    isLocked ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:border-[#F0907A]"
+                    isLocked ? "opacity-60 cursor-not-allowed" : "cursor-pointer hover:border-[#5B9FE0]"
                   }`}
                 >
                   <Upload className="w-4 h-4 text-muted-foreground" />
@@ -613,7 +613,7 @@ export default function AdopterProfile() {
                     className="h-11 rounded-xl border text-sm font-medium transition-all duration-200"
                     style={
                       data.preferences.animalType === opt
-                        ? { backgroundColor: "#F0907A", borderColor: "#F0907A", color: "#fff" }
+                        ? { backgroundColor: "#5B9FE0", borderColor: "#5B9FE0", color: "#fff" }
                         : { backgroundColor: "transparent", borderColor: "var(--border)", color: "var(--foreground)" }
                     }
                   >
@@ -823,7 +823,7 @@ export default function AdopterProfile() {
                     onChange={(e) =>
                       update("consent", { [item.key]: e.target.checked } as Partial<ProfileState["consent"]>)
                     }
-                    className="mt-1 w-4 h-4 rounded accent-[#F0907A] flex-shrink-0 cursor-pointer"
+                    className="mt-1 w-4 h-4 rounded accent-[#5B9FE0] flex-shrink-0 cursor-pointer"
                   />
                   <span className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                     {item.label}
@@ -844,7 +844,7 @@ export default function AdopterProfile() {
                 onClick={handleSave}
                 disabled={!consentAll}
                 className="flex-1 h-14 rounded-full text-white text-base font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100"
-                style={{ backgroundColor: "#F0907A" }}
+                style={{ backgroundColor: "#5B9FE0" }}
               >
                 Save &amp; Start Exploring
               </button>

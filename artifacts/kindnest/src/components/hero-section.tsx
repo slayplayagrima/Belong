@@ -40,7 +40,7 @@ export function HeroSection() {
             Where hope <br />
             <span
               className="italic"
-              style={{ color: "#F0907A" }}
+              style={{ color: "#5B9FE0" }}
             >
               meets home.
             </span>
@@ -58,7 +58,7 @@ export function HeroSection() {
               href="/role-select"
               data-testid="button-start-journey"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-base shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95 w-full sm:w-auto"
-              style={{ backgroundColor: "#F0907A" }}
+              style={{ backgroundColor: "#5B9FE0" }}
             >
               Start Your Journey
               <ArrowRight className="w-5 h-5" />

@@ -81,7 +81,7 @@ export default function NgoRegister() {
                 <Link 
                   href="/" 
                   className="h-12 px-8 inline-flex items-center justify-center rounded-full text-white font-medium transition-all hover:scale-105 active:scale-95 shadow-md"
-                  style={{ backgroundColor: "#F0907A" }}
+                  style={{ backgroundColor: "#5B9FE0" }}
                 >
                   Return to Home
                 </Link>
@@ -218,7 +218,7 @@ export default function NgoRegister() {
                     <button 
                       type="submit"
                       className="w-full h-14 mt-2 inline-flex items-center justify-center rounded-full text-white text-lg font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md"
-                      style={{ backgroundColor: "#F0907A" }}
+                      style={{ backgroundColor: "#5B9FE0" }}
                     >
                       Apply for Verification
                     </button>

@@ -97,7 +97,7 @@ export default function Login() {
                   className="flex-1 h-10 rounded-full text-sm font-medium transition-all duration-200"
                   style={
                     tab === t
-                      ? { backgroundColor: "#F0907A", color: "#fff" }
+                      ? { backgroundColor: "#5B9FE0", color: "#fff" }
                       : { backgroundColor: "transparent", color: "var(--muted-foreground)" }
                   }
                 >
@@ -174,7 +174,7 @@ export default function Login() {
                       onClick={handleSendOtp}
                       disabled={!phoneValid}
                       className="w-full h-14 rounded-full text-white text-base font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 mt-2"
-                      style={{ backgroundColor: "#F0907A" }}
+                      style={{ backgroundColor: "#5B9FE0" }}
                     >
                       Send OTP
                     </button>
@@ -183,7 +183,7 @@ export default function Login() {
                       onClick={handleVerify}
                       disabled={!otpValid}
                       className="w-full h-14 rounded-full text-white text-base font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 mt-2"
-                      style={{ backgroundColor: "#F0907A" }}
+                      style={{ backgroundColor: "#5B9FE0" }}
                     >
                       Verify &amp; Login
                     </button>
@@ -238,7 +238,7 @@ export default function Login() {
                     onClick={handlePasswordLogin}
                     disabled={!emailValid || !passwordValid}
                     className="w-full h-14 rounded-full text-white text-base font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-md disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 mt-2"
-                    style={{ backgroundColor: "#F0907A" }}
+                    style={{ backgroundColor: "#5B9FE0" }}
                   >
                     Login
                   </button>

@@ -137,7 +137,7 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                   className="text-center group cursor-default"
                 >
-                  <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-200" style={{ backgroundColor: "#F0907A" }}>
+                  <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-200" style={{ backgroundColor: "#5B9FE0" }}>
                     <span className="font-serif text-2xl text-white">{item.step}</span>
                   </div>
                   <h3 className="text-xl font-serif mb-3 text-foreground">{item.title}</h3>
@@ -355,7 +355,7 @@ export default function Home() {
                   href="/role-select"
                   data-testid="button-cta-start"
                   className="inline-flex items-center justify-center h-16 px-10 text-xl rounded-full text-white font-semibold shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95"
-                  style={{ backgroundColor: "#F0907A" }}
+                  style={{ backgroundColor: "#5B9FE0" }}
                 >
                   Start Your Journey
                 </Link>
