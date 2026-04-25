@@ -9,6 +9,7 @@ import NgoRegister from "@/pages/ngo-register";
 import Signup from "@/pages/signup";
 import Login from "@/pages/login";
 import AdopterProfile from "@/pages/adopter-profile";
+import NgoProfileSetup from "@/pages/ngo-profile-setup";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ function Router() {
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
       <Route path="/profile/adopter" component={AdopterProfile} />
+      <Route path="/ngo/profile-setup" component={NgoProfileSetup} />
       <Route component={NotFound} />
     </Switch>
   );
