@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 import type { Animal } from "@/data/animals";
 
 const CATEGORY_LABEL: Record<Animal["category"], string> = {
@@ -40,11 +41,11 @@ export function AnimalCard({ animal }: { animal: Animal }) {
           </span>
         </div>
 
-        <p className="text-sm text-muted-foreground mb-3">{animal.breed}</p>
+        <p className="text-sm text-muted-foreground mb-3">{animal.species}</p>
 
         <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-4">
           <MapPin className="w-3.5 h-3.5" />
-          <span>{animal.location}</span>
+          <span>{animal.location.city}, {animal.location.state}</span>
         </div>
 
         {animal.tags.length > 0 && (
@@ -60,14 +61,14 @@ export function AnimalCard({ animal }: { animal: Animal }) {
           </div>
         )}
 
-        <button
-          type="button"
+        <Link
+          href={`/animals/${animal.id}`}
           className="mt-auto h-11 inline-flex items-center justify-center gap-2 rounded-full text-white text-sm font-medium transition-all hover:scale-[1.02] active:scale-95 shadow-sm"
           style={{ backgroundColor: "#5B9FE0" }}
         >
           View Details
           <ArrowRight className="w-4 h-4" />
-        </button>
+        </Link>
       </div>
     </motion.article>
   );

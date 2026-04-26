@@ -3,9 +3,9 @@ import { Link } from "wouter";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 
 const trustSignals = [
-  "Verified NGOs across India",
-  "Safe & transparent adoption",
-  "Trusted by shelters nationwide",
+  "Verified NGOs",
+  "Safe adoption",
+  "Transparent process",
 ];
 
 export function HeroSection() {
@@ -27,44 +27,42 @@ export function HeroSection() {
           {/* Platform badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/30 text-secondary-foreground text-sm font-medium mb-5">
             <Sparkles className="w-4 h-4" />
-            <span>A centralized adoption platform for India</span>
+            <span>Animal adoption, made gentle</span>
           </div>
 
           {/* Emotional hook */}
           <p className="text-sm text-[#6B7280] mb-4 leading-relaxed">
-            Thousands are waiting for a home. Some just haven't met you yet.
+            Thousands of animals are waiting for a home. Some just haven't met you yet.
           </p>
 
           {/* Main heading */}
           <h1 className="text-5xl lg:text-[5.5rem] font-serif text-foreground leading-[1.05] mb-6 tracking-tight">
-            Where hope <br />
+            Find your <br />
             <span
               className="italic"
               style={{ color: "#5B9FE0" }}
             >
-              meets home.
+              companion.
             </span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-10 max-w-lg">
-            Every child and animal deserves a safe embrace. We connect compassionate people with those who need love, building families across India.
+            Adopt animals from verified NGOs near you.
           </p>
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3 mb-8">
-            {/* Primary — peach, white text, hover scale */}
             <Link
-              href="/role-select"
-              data-testid="button-start-journey"
+              href="/animals"
+              data-testid="button-browse-animals"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white font-semibold text-base shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95 w-full sm:w-auto"
               style={{ backgroundColor: "#5B9FE0" }}
             >
-              Start Your Journey
+              Browse Animals
               <ArrowRight className="w-5 h-5" />
             </Link>
 
-            {/* Secondary — border only, muted text, smaller */}
             <Link
               href="/ngo/register"
               data-testid="button-register-ngo"
@@ -88,22 +86,21 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        {/* RIGHT — Image with floating cards */}
+        {/* RIGHT — Image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           className="relative mt-8 lg:mt-16"
         >
-          {/* Main image — slightly offset downward for asymmetry */}
           <motion.div
             whileHover={{ scale: 1.015 }}
             transition={{ duration: 0.4 }}
             className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/60"
           >
             <img
-              src="https://lifesong.b-cdn.net/site/wp-content/uploads/2019/10/91535DFB-2B24-4F46-947E-9A36FD1A12B0-copy-2-1024x656.jpg"
-              alt="Child hugging a golden retriever puppy"
+              src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=900&q=80"
+              alt="A happy rescued dog smiling outdoors"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />

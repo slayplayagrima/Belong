@@ -1,0 +1,151 @@
+Refactor the EXISTING “Belong” web application to focus ONLY on animal adoption (Phase 1). Do NOT create a new project. Keep all existing UI components and design system.
+
+---
+
+## 🎯 GOAL
+
+* Remove child adoption functionality
+* Keep it as a “Coming Soon” placeholder
+* Simplify flows to support animal adoption only
+* Prepare routes for upcoming core features
+
+---
+
+## 🧹 REMOVE / HIDE
+
+* Remove all child-specific form fields from:
+
+  * Adopter Profile
+  * NGO Profile
+* Remove child-related routes/pages OR hide behind placeholder
+* Remove mixed copy referring to “children + animals”
+
+---
+
+## ✏️ UPDATE COPY
+
+Landing / Hero:
+
+* Title: “Find your companion”
+* Subtext: “Adopt animals from verified NGOs near you.”
+
+Add trust line:
+“Verified NGOs • Safe adoption • Transparent process”
+
+---
+
+## 🧭 NAVBAR
+
+Add:
+
+* Animals (/animals)
+* Dashboard (role-based)
+* Profile / Login
+
+Remove:
+
+* Child-related navigation items
+
+---
+
+## 🏠 LOGGED-IN HOME (TEMP)
+
+Create sections:
+
+* “Near You”
+* “Based on Your Preferences”
+* “Recently Added”
+
+Add a placeholder card:
+“Child adoption — Coming soon via verified agencies”
+
+---
+
+## 👤 ADOPTER PROFILE (UPDATE)
+
+Keep:
+
+* City, State
+* Residence Type
+* Family Size
+* Experience
+* Preferences:
+
+  * category (dog/cat/bird/fish/other)
+  * age
+  * size
+
+Add:
+
+* “Open to foster?”
+* “Daily time availability”
+
+---
+
+## 🏢 NGO PROFILE (UPDATE)
+
+Keep verification flow.
+
+Remove child-specific compliance fields.
+
+Add:
+
+* Animals handled (multi-select)
+* Service areas
+* Adoption difficulty (easy/moderate/strict)
+
+---
+
+## 📍 ADD / PREPARE ROUTES
+
+Create empty pages or placeholders:
+
+* /animals
+* /animals/:id
+* /ngo/dashboard
+* /ngo/add-animal
+* /my-requests
+
+---
+
+## 📦 DATA STRUCTURE (FRONTEND MOCK)
+
+Use:
+
+Animal:
+
+* id
+* name
+* category
+* species
+* age
+* gender
+* location { city, state }
+* ngoId
+* status
+* attributes (object)
+
+---
+
+## 🎨 UI
+
+* Maintain Belong design system (soft pastel, rounded cards)
+* Keep consistency across all pages
+
+---
+
+## 🎯 FINAL RESULT
+
+The app should feel like:
+
+* A focused animal adoption platform
+* Clean, consistent, and ready for core feature development
+* No mixed messaging
+
+---
+
+Output:
+
+* Updated pages/components
+* Clean routes
+* No child-adoption UI (only placeholder)

@@ -4,7 +4,7 @@ import { HeroSection } from "@/components/hero-section";
 import { Button } from "@/components/button";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Heart, Shield, Users, CheckCircle2, Star } from "lucide-react";
+import { ArrowRight, Heart, Shield, PawPrint, CheckCircle2, Star, Clock } from "lucide-react";
 
 const storiesOfHope = [
   {
@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
       <Navbar />
-      
+
       <main className="flex-1 pt-20">
         {/* Section 1: Hero */}
         <HeroSection />
@@ -36,7 +36,7 @@ export default function Home() {
         {/* Section 2: Mission */}
         <section id="about" className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -44,7 +44,8 @@ export default function Home() {
             >
               <h2 className="text-4xl md:text-5xl font-serif mb-6 text-foreground">A softer world starts here.</h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                We believe in the quiet joy of a safe home. Belong is a sanctuary—a place where trust is built, awareness is spread, and gentle connections are made.
+                Belong is a sanctuary for animals waiting to be loved. We connect compassionate
+                people with verified NGOs across India.
               </p>
             </motion.div>
 
@@ -53,21 +54,21 @@ export default function Home() {
                 {
                   icon: Heart,
                   title: "Compassionate Adoption",
-                  desc: "Connecting loving individuals with animals who need a forever home.",
-                  color: "bg-primary/10 text-primary"
-                },
-                {
-                  icon: Users,
-                  title: "Child Welfare Awareness",
-                  desc: "Shining a light on ethical child adoption processes and supporting partner NGOs.",
-                  color: "bg-secondary/20 text-secondary-foreground"
+                  desc: "Find dogs, cats, birds, fish and more from shelters who care.",
+                  color: "bg-primary/10 text-primary",
                 },
                 {
                   icon: Shield,
                   title: "Safe & Verified",
-                  desc: "Every NGO and shelter on our platform is verified to ensure safety and trust.",
-                  color: "bg-accent text-accent-foreground"
-                }
+                  desc: "Every NGO on our platform is verified for trust and transparency.",
+                  color: "bg-secondary/20 text-secondary-foreground",
+                },
+                {
+                  icon: PawPrint,
+                  title: "All Companions Welcome",
+                  desc: "From puppies to senior cats, every animal deserves a forever home.",
+                  color: "bg-accent text-accent-foreground",
+                },
               ].map((feature, i) => (
                 <motion.div
                   key={i}
@@ -93,7 +94,7 @@ export default function Home() {
         {/* Section 3: How it Works */}
         <section className="py-24">
           <div className="container mx-auto px-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -101,35 +102,35 @@ export default function Home() {
             >
               <h2 className="text-4xl md:text-5xl font-serif mb-6 text-foreground">A gentle journey.</h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Whether you're adopting a pet, supporting a child welfare NGO, or registering as a partner, we're with you every step of the way.
+                Browsing, applying, and bringing home a companion — every step is supported.
               </p>
             </motion.div>
-            
+
             <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto relative">
               <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-border -z-10" />
               {[
                 {
                   step: "01",
-                  title: "Choose Adoption Path",
-                  desc: "Select whether you want to adopt an animal or explore child adoption guidance.",
+                  title: "Create Your Profile",
+                  desc: "Tell us about your home and what kind of companion fits your life.",
                 },
                 {
                   step: "02",
-                  title: "Discover Animals & NGOs",
-                  desc: "Browse verified animal listings and trusted NGO partners across India.",
+                  title: "Discover Animals",
+                  desc: "Browse verified animals from NGOs across India by city, age, and species.",
                 },
                 {
                   step: "03",
-                  title: "Send Requests",
-                  desc: "Apply for animal adoption or send inquiries to NGOs securely.",
+                  title: "Send a Request",
+                  desc: "Connect securely with the NGO and start the adoption conversation.",
                 },
                 {
                   step: "04",
-                  title: "Complete the Journey",
-                  desc: "Follow through with the adoption process and bring someone home.",
+                  title: "Welcome Them Home",
+                  desc: "Complete the process with NGO support and bring your new friend home.",
                 },
               ].map((item, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -148,11 +149,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 4: Two-Sided Impact (Animals) */}
+        {/* Section 4: Open your door */}
         <section id="impact" className="py-24 bg-accent/20">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -160,7 +161,7 @@ export default function Home() {
               >
                 <img src="/images/cat.png" alt="Rescue cat by window" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </motion.div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -181,7 +182,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <Button asChild variant="outline" size="lg">
-                  <Link href="/role-select" className="inline-flex items-center gap-2 group">
+                  <Link href="/animals" className="inline-flex items-center gap-2 group">
                     Meet the animals <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
@@ -190,47 +191,35 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 5: Two-Sided Impact (Children) */}
-        <section className="py-24">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+        {/* Section 5: Coming Soon — Child Adoption */}
+        <section className="py-20">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-[2rem] border border-dashed border-border bg-muted/30 p-10 md:p-12 text-center"
+            >
+              <div
+                className="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-5"
+                style={{ backgroundColor: "#EAF3FB" }}
               >
-                <h2 className="text-4xl md:text-5xl font-serif mb-6 text-foreground">Guiding the path to family.</h2>
-                <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
-                  Child adoption in India can be complex. We raise awareness, provide resources, and connect you with certified CARA-approved NGOs to demystify the journey.
-                </p>
-                <p className="text-sm text-[#9CA3AF] mb-8">
-                  Child adoption is guided through verified agencies and follows official legal processes in India.
-                </p>
-                <ul className="space-y-5 mb-10">
-                  {['Legal guidance and CARA process resources', 'Connections to verified partner NGOs', 'Community support groups for parents'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-foreground font-medium text-lg">
-                      <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-accent-foreground shrink-0">
-                        <Shield className="w-4 h-4 text-accent-foreground" />
-                      </div>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <Button asChild variant="outline" size="lg">
-                  <Link href="/role-select" className="inline-flex items-center gap-2 group">
-                    Learn about child adoption <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-xl"
+                <Clock className="w-6 h-6" style={{ color: "#5B9FE0" }} />
+              </div>
+              <span
+                className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4"
+                style={{ backgroundColor: "#DBEAFE", color: "#1E40AF" }}
               >
-                <img src="/images/child.png" alt="Child drawing with crayons" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              </motion.div>
-            </div>
+                Coming Soon
+              </span>
+              <h3 className="text-2xl md:text-3xl font-serif mb-3 text-foreground">
+                Child adoption — coming soon via verified agencies
+              </h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Belong is starting with animal adoption. We're working closely with CARA-approved
+                agencies to bring guided child adoption support to the platform soon.
+              </p>
+            </motion.div>
           </div>
         </section>
 
@@ -286,18 +275,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 7: Community & Success */}
+        {/* Section 7: Community */}
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
                 <img src="/images/community.png" alt="Diverse community outdoors" className="w-full h-auto rounded-[3rem] shadow-lg" />
               </motion.div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -322,9 +311,9 @@ export default function Home() {
         {/* Section 8: Partner NGOs Banner */}
         <section className="py-16 border-y border-border">
           <div className="container mx-auto px-4 text-center">
-            <p className="text-muted-foreground font-medium mb-8">TRUSTED BY CARA-APPROVED NGOS AND VERIFIED SHELTERS NATIONWIDE</p>
+            <p className="text-muted-foreground font-medium mb-8">TRUSTED BY VERIFIED NGOS AND SHELTERS NATIONWIDE</p>
             <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              {['Hope Shelter India', 'Safe Haven Orphange', 'Paws & Hearts Rescue', 'New Beginnings NGO', 'Little Steps Foundation'].map((partner, i) => (
+              {['Hope Shelter India', 'Paws & Hearts Rescue', 'New Beginnings NGO', 'Wing Sanctuary', 'Friendicoes SECA'].map((partner, i) => (
                 <div key={i} className="text-xl md:text-2xl font-serif text-foreground font-bold italic tracking-wider">
                   {partner}
                 </div>
@@ -337,7 +326,7 @@ export default function Home() {
         <section className="py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-primary/10 -skew-y-3 transform origin-top-left scale-110"></div>
           <div className="container mx-auto px-4 relative z-10 text-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -348,16 +337,16 @@ export default function Home() {
               </div>
               <h2 className="text-4xl md:text-6xl font-serif mb-6 text-foreground">Someone out there is waiting for you.</h2>
               <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-                Whether you're looking to adopt, volunteer, or register your NGO, your journey towards a kinder world starts right here.
+                Browse verified animals near you, or register your NGO to start placing companions.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
                 <Link
-                  href="/role-select"
-                  data-testid="button-cta-start"
+                  href="/animals"
+                  data-testid="button-cta-browse"
                   className="inline-flex items-center justify-center h-16 px-10 text-xl rounded-full text-white font-semibold shadow-md transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-95"
                   style={{ backgroundColor: "#5B9FE0" }}
                 >
-                  Start Your Journey
+                  Browse Animals
                 </Link>
                 <Link
                   href="/ngo/register"

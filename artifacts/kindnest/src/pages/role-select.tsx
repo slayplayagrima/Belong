@@ -9,15 +9,15 @@ export default function RoleSelect() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background">
       <Navbar />
-      
+
       <main className="flex-1 flex items-center justify-center py-20 px-4">
         <div className="w-full max-w-4xl mx-auto">
           <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to home
           </Link>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
@@ -41,9 +41,9 @@ export default function RoleSelect() {
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-200">
                 <Heart className="w-8 h-8 text-primary group-hover:text-white group-hover:fill-white transition-colors duration-200" />
               </div>
-              <h2 className="text-2xl font-serif mb-3">I want to adopt</h2>
+              <h2 className="text-2xl font-serif mb-3">I want to adopt an animal</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Explore animals, learn about child adoption, and connect with verified NGOs across India.
+                Browse animals from verified NGOs across India and connect with the right shelter for you.
               </p>
             </motion.button>
 
@@ -61,12 +61,11 @@ export default function RoleSelect() {
               </div>
               <h2 className="text-2xl font-serif mb-3">I represent an NGO</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Register your organization, share stories, and connect with families looking to adopt.
+                Register your organization, list animals available for adoption, and reach more families.
               </p>
             </motion.button>
           </div>
 
-          {/* Login link */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,7 +78,6 @@ export default function RoleSelect() {
             </Link>
           </motion.p>
 
-          {/* Trust line */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

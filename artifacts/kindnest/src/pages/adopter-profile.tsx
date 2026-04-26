@@ -60,11 +60,6 @@ type ProfileState = {
     dailyTime: string;
     activityLevel: string;
     openToFostering: string;
-    interestedInChild: boolean;
-    childAgeGroup: string;
-    openToSpecialNeeds: string;
-    maritalStatus: string;
-    incomeRange: string;
   };
   experience: {
     previousAdoption: string;
@@ -107,11 +102,6 @@ const initialState: ProfileState = {
     dailyTime: "",
     activityLevel: "",
     openToFostering: "",
-    interestedInChild: false,
-    childAgeGroup: "",
-    openToSpecialNeeds: "",
-    maritalStatus: "",
-    incomeRange: "",
   },
   experience: { previousAdoption: "", whyAdopt: "", homeVisit: "" },
   consent: { accurate: false, contactConsent: false, responsibility: false },
@@ -697,90 +687,6 @@ export default function AdopterProfile() {
                 />
               </Field>
 
-              {/* Child adoption toggle */}
-              <div className="flex items-center justify-between bg-muted/40 rounded-xl px-4 py-3 mt-2">
-                <div>
-                  <p className="text-sm font-medium text-foreground">Interested in child adoption?</p>
-                  <p className="text-xs text-muted-foreground">We'll guide you through the process</p>
-                </div>
-                <Switch
-                  checked={data.preferences.interestedInChild}
-                  onCheckedChange={(v) => update("preferences", { interestedInChild: v })}
-                />
-              </div>
-
-              {data.preferences.interestedInChild && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="space-y-5"
-                >
-                  <div className="flex items-start gap-3 bg-secondary/10 border border-secondary/30 rounded-xl px-4 py-3">
-                    <Info className="w-5 h-5 text-secondary-foreground mt-0.5 flex-shrink-0" />
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      Belong does not directly match children. We connect you with government-approved agencies (CARA) that follow official adoption processes in India.
-                    </p>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <Field label="Preferred Age Group">
-                      <Select
-                        value={data.preferences.childAgeGroup}
-                        onValueChange={(v) => update("preferences", { childAgeGroup: v })}
-                      >
-                        <SelectTrigger className="h-12 rounded-xl">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="infant">Infant (0-2)</SelectItem>
-                          <SelectItem value="toddler">Toddler (2-5)</SelectItem>
-                          <SelectItem value="child">Child (5-12)</SelectItem>
-                          <SelectItem value="teen">Teen (12+)</SelectItem>
-                          <SelectItem value="any">Open to any age</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </Field>
-                    <Field label="Open to special needs">
-                      <YesNo
-                        value={data.preferences.openToSpecialNeeds}
-                        onChange={(v) => update("preferences", { openToSpecialNeeds: v })}
-                      />
-                    </Field>
-                    <Field label="Marital Status">
-                      <Select
-                        value={data.preferences.maritalStatus}
-                        onValueChange={(v) => update("preferences", { maritalStatus: v })}
-                      >
-                        <SelectTrigger className="h-12 rounded-xl">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="single">Single</SelectItem>
-                          <SelectItem value="married">Married</SelectItem>
-                          <SelectItem value="divorced">Divorced</SelectItem>
-                          <SelectItem value="widowed">Widowed</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </Field>
-                    <Field label="Annual Income Range">
-                      <Select
-                        value={data.preferences.incomeRange}
-                        onValueChange={(v) => update("preferences", { incomeRange: v })}
-                      >
-                        <SelectTrigger className="h-12 rounded-xl">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="under-5">Under ₹5L</SelectItem>
-                          <SelectItem value="5-10">₹5L - ₹10L</SelectItem>
-                          <SelectItem value="10-25">₹10L - ₹25L</SelectItem>
-                          <SelectItem value="25-plus">₹25L+</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </Field>
-                  </div>
-                </motion.div>
-              )}
             </SectionCard>
 
             {/* Section 5: Experience */}

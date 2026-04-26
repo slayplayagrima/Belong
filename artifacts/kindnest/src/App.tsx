@@ -11,6 +11,11 @@ import Login from "@/pages/login";
 import AdopterProfile from "@/pages/adopter-profile";
 import NgoProfileSetup from "@/pages/ngo-profile-setup";
 import AnimalsPage from "@/pages/animals";
+import AnimalDetail from "@/pages/animal-detail";
+import NgoDashboard from "@/pages/ngo-dashboard";
+import NgoAddAnimal from "@/pages/ngo-add-animal";
+import MyRequests from "@/pages/my-requests";
+import Dashboard from "@/pages/dashboard";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +29,12 @@ function Router() {
       <Route path="/login" component={Login} />
       <Route path="/profile/adopter" component={AdopterProfile} />
       <Route path="/ngo/profile-setup" component={NgoProfileSetup} />
+      <Route path="/ngo/dashboard" component={NgoDashboard} />
+      <Route path="/ngo/add-animal" component={NgoAddAnimal} />
       <Route path="/animals" component={AnimalsPage} />
+      <Route path="/animals/:id" component={AnimalDetail} />
+      <Route path="/my-requests" component={MyRequests} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -14,7 +14,7 @@ export function Footer() {
               <span>Belong</span>
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">
-              Connecting loving families with animals and raising awareness for child adoption across India.
+              Connecting loving families with animals from verified NGOs across India.
             </p>
           </div>
 
@@ -23,18 +23,18 @@ export function Footer() {
             <h4 className="font-serif text-lg mb-6 text-foreground">Explore</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="/role-select" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  Adopt Animals
+                <Link href="/animals" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  Browse Animals
                 </Link>
               </li>
               <li>
-                <Link href="/role-select" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  Child Adoption Guide
+                <Link href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  My Dashboard
                 </Link>
               </li>
               <li>
-                <Link href="/ngo/register" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  NGOs
+                <Link href="/my-requests" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  My Requests
                 </Link>
               </li>
             </ul>
@@ -50,14 +50,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  Guidelines
-                </a>
+                <Link href="/ngo/dashboard" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  NGO Dashboard
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                  Dashboard
-                </a>
+                <Link href="/ngo/add-animal" className="text-muted-foreground hover:text-primary transition-colors duration-200">
+                  Add an Animal
+                </Link>
               </li>
             </ul>
           </div>

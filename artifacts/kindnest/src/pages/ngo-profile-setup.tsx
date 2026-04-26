@@ -29,7 +29,8 @@ type NgoProfile = {
   organization: {
     name: string;
     registrationNumber: string;
-    orgType: string;
+    animalsHandled: string[];
+    adoptionDifficulty: string;
     yearEstablished: string;
   };
   location: {
@@ -72,7 +73,7 @@ type NgoProfile = {
 };
 
 const initialState: NgoProfile = {
-  organization: { name: "", registrationNumber: "", orgType: "", yearEstablished: "" },
+  organization: { name: "", registrationNumber: "", animalsHandled: [], adoptionDifficulty: "", yearEstablished: "" },
   location: { fullAddress: "", city: "", state: "", serviceAreas: [] },
   contact: { name: "", phone: "", email: "" },
   documents: { registrationCertName: "", govRecognitionName: "", additionalDocsName: "" },
@@ -93,6 +94,14 @@ const INDIAN_STATES = [
 const SERVICE_AREA_OPTIONS = [
   "Delhi NCR", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Kolkata",
   "Pune", "Ahmedabad", "Jaipur", "Lucknow", "Chandigarh", "Pan-India",
+];
+
+const ANIMAL_OPTIONS = ["Dogs", "Cats", "Birds", "Fish", "Small Mammals", "Reptiles", "Other"];
+
+const DIFFICULTY_OPTIONS: { value: string; label: string; desc: string }[] = [
+  { value: "easy", label: "Easy", desc: "Light screening, fast turnaround" },
+  { value: "moderate", label: "Moderate", desc: "Standard application + home check" },
+  { value: "strict", label: "Strict", desc: "In-depth interviews + multiple checks" },
 ];
 
 function SectionCard({
@@ -226,7 +235,8 @@ export default function NgoProfileSetup() {
     const tracked: (string | boolean | number)[] = [
       data.organization.name,
       data.organization.registrationNumber,
-      data.organization.orgType,
+      data.organization.animalsHandled.length > 0,
+      data.organization.adoptionDifficulty,
       data.organization.yearEstablished,
       data.location.fullAddress,
       data.location.city,
@@ -416,20 +426,64 @@ export default function NgoProfileSetup() {
                   />
                 </Field>
               </div>
-              <Field label="Organization Type" required>
-                <Select
-                  value={data.organization.orgType}
-                  onValueChange={(v) => update("organization", { orgType: v })}
-                >
-                  <SelectTrigger className="h-12 rounded-xl">
-                    <SelectValue placeholder="Select organization type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="animal-shelter">Animal Shelter</SelectItem>
-                    <SelectItem value="child-welfare">Child Welfare Agency</SelectItem>
-                    <SelectItem value="both">Both Animal & Child</SelectItem>
-                  </SelectContent>
-                </Select>
+              <Field label="Animals Handled" required>
+                <div className="flex flex-wrap gap-2">
+                  {ANIMAL_OPTIONS.map((opt) => {
+                    const active = data.organization.animalsHandled.includes(opt);
+                    return (
+                      <button
+                        key={opt}
+                        type="button"
+                        onClick={() => {
+                          const set = new Set(data.organization.animalsHandled);
+                          if (active) {
+                            set.delete(opt);
+                          } else {
+                            set.add(opt);
+                          }
+                          update("organization", { animalsHandled: Array.from(set) });
+                        }}
+                        className={`px-4 h-10 rounded-full text-sm font-medium border transition-all ${
+                          active
+                            ? "text-white border-transparent shadow-sm"
+                            : "text-foreground bg-card border-border hover:border-primary/40"
+                        }`}
+                        style={active ? { backgroundColor: "#5B9FE0" } : undefined}
+                      >
+                        {opt}
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Select all that apply — adopters can filter NGOs by animal type.
+                </p>
+              </Field>
+
+              <Field label="Adoption Difficulty" required>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  {DIFFICULTY_OPTIONS.map((opt) => {
+                    const active = data.organization.adoptionDifficulty === opt.value;
+                    return (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => update("organization", { adoptionDifficulty: opt.value })}
+                        className={`text-left p-4 rounded-xl border-2 transition-all ${
+                          active ? "shadow-sm" : "border-border bg-card hover:border-primary/40"
+                        }`}
+                        style={
+                          active
+                            ? { borderColor: "#5B9FE0", backgroundColor: "#EAF3FB" }
+                            : undefined
+                        }
+                      >
+                        <p className="font-semibold text-sm text-foreground mb-1">{opt.label}</p>
+                        <p className="text-xs text-muted-foreground leading-snug">{opt.desc}</p>
+                      </button>
+                    );
+                  })}
+                </div>
               </Field>
             </SectionCard>
 
