@@ -27,7 +27,7 @@ const storiesOfHope = [
 export default function Home() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background overflow-x-hidden">
-      <Navbar />
+      <Navbar variant="landing" />
 
       <main className="flex-1 pt-20">
         {/* Section 1: Hero */}
