@@ -10,6 +10,7 @@ import Signup from "@/pages/signup";
 import Login from "@/pages/login";
 import AdopterProfile from "@/pages/adopter-profile";
 import NgoProfileSetup from "@/pages/ngo-profile-setup";
+import NgoProfile from "@/pages/ngo-profile";
 import AnimalsPage from "@/pages/animals";
 import AnimalDetail from "@/pages/animal-detail";
 import NgoDashboard from "@/pages/ngo-dashboard";
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/login" component={Login} />
       <Route path="/profile/adopter" component={AdopterProfile} />
       <Route path="/ngo/profile-setup" component={NgoProfileSetup} />
+      <Route path="/ngo/profile" component={NgoProfile} />
       <Route path="/ngo/dashboard" component={NgoDashboard} />
       <Route path="/ngo/add-animal" component={NgoAddAnimal} />
       <Route path="/animals" component={AnimalsPage} />
